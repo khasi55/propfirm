@@ -36,7 +36,7 @@ export async function loginAdmin(formData: FormData) {
     const cookieStore = await cookies();
     const JWT_SECRET = process.env.JWT_SECRET;
     if (!JWT_SECRET) {
-        console.error("CRITICAL: JWT_SECRET environment variable is missing!");
+        throw new Error("CRITICAL: JWT_SECRET environment variable is missing!");
     }
 
     const adminUser = user as { id: string, email: string, role?: string };
