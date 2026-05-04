@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, Trophy } from 'lucide-react'
 
 interface AuthCardProps {
     children: React.ReactNode
@@ -39,17 +39,11 @@ export default function AuthCard({
             >
                 {/* Logo */}
                 <Link href="/dashboard" className="flex items-center justify-center gap-3 mb-8">
-                    <div className="relative w-10 h-10 shrink-0">
-                        <Image
-                            src="/shark-icon.svg"
-                            alt="SharkFunded"
-                            fill
-                            className="object-contain"
-                            priority
-                        />
+                    <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                        <Trophy className="w-6 h-6 text-white" />
                     </div>
                     <span className="text-2xl font-black text-slate-900 tracking-tight">
-                        SharkFunded
+                        Demo Funded
                     </span>
                 </Link>
 
@@ -93,7 +87,7 @@ export default function AuthCard({
                 </div>
 
                 <p className="mt-4 text-center text-xs text-slate-500">
-                    © 2024 SharkFunded. All rights reserved.
+                    © 2024 Demo Funded. All rights reserved.
                 </p>
             </motion.div>
         </div>

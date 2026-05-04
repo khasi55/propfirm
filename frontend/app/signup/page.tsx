@@ -36,40 +36,10 @@ function SignupContent() {
             return
         }
 
-        try {
-            const response = await fetch('/api/auth/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                    fullName,
-                    referralCode,
-                    country,
-                    phone,
-                }),
-            })
-
-            const data = await response.json()
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Signup failed')
-            }
-
-            // Track Lead event
-            trackLead({
-                email: email,
-                method: 'email'
-            });
-
+        // Demo Signup Bypass: Redirect to dashboard after a short delay
+        setTimeout(() => {
             setSuccess(true)
-        } catch (err: any) {
-            setError(err.message)
-        } finally {
-            setLoading(false)
-        }
+        }, 1500)
     }
 
     if (success) {
@@ -136,7 +106,7 @@ function SignupContent() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-12 py-3.5 text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white transition-all placeholder:text-slate-400 font-medium"
-                            placeholder="trader@sharkfunded.com"
+                            placeholder="trader@demofunded.com"
                         />
                     </div>
                 </div>

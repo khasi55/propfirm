@@ -90,7 +90,7 @@ function DashboardContent() {
 
         // 1. Try Metadata first (cleanest)
         if (account.metadata?.model && account.metadata?.type) {
-            if (account.metadata.type === 'direct_funded') return 'SharkFunded Direct Funded';
+            if (account.metadata.type === 'direct_funded') return 'Demo Funded Direct Funded';
             const model = account.metadata.model.charAt(0).toUpperCase() + account.metadata.model.slice(1);
             const type = account.metadata.type === 'instant' ? 'Instant' :
                 account.metadata.type.replace('-', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase());

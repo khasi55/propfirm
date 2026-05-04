@@ -1,4 +1,4 @@
-import { Search, ChevronDown, TrendingUp, Briefcase, ShoppingCart, Loader2, Filter, RefreshCw, Plus, Archive, X, AlertCircle } from "lucide-react";
+import { Search, ChevronDown, TrendingUp, Briefcase, ShoppingCart, Loader2, Filter, RefreshCw, Plus, Archive, X, AlertCircle, Trophy } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
@@ -369,14 +369,8 @@ function AccountSwitcherContent({
             <div className="p-4 sm:p-6 pb-4">
                 <div className="flex flex-col gap-6 mb-6">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center p-2.5 border border-blue-500/10">
-                            <Image
-                                src="/shark-icon.svg"
-                                alt="SharkFunded"
-                                width={32}
-                                height={32}
-                                className="object-contain"
-                            />
+                        <div className="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center p-2.5 border border-blue-500/10 shrink-0">
+                            <Trophy className="w-7 h-7 text-blue-500" />
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-0.5">

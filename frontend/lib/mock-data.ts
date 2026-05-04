@@ -117,3 +117,49 @@ export const MOCK_ADMIN_METRICS = {
         { name: 'Apr', revenue: 53000 },
     ]
 };
+
+export const MOCK_COMPETITIONS = [
+    {
+        id: 'comp_1',
+        title: 'May Championship 2024',
+        description: 'Compete for the highest percentage gain in May.',
+        start_date: '2024-05-01T00:00:00Z',
+        end_date: '2024-05-31T23:59:59Z',
+        entry_fee: 0,
+        prize_pool: 5000,
+        max_participants: 1000,
+        status: 'active',
+        participant_count: 450,
+        joined: true,
+        platform: 'MetaTrader 5'
+    },
+    {
+        id: 'comp_2',
+        title: 'Summer Scalping Challenge',
+        description: 'Highest volume challenge for scalpers.',
+        start_date: '2024-06-01T00:00:00Z',
+        end_date: '2024-06-30T23:59:59Z',
+        entry_fee: 50,
+        prize_pool: 10000,
+        max_participants: 500,
+        status: 'upcoming',
+        participant_count: 120,
+        joined: false,
+        platform: 'MetaTrader 5'
+    },
+    {
+        id: 'comp_3',
+        title: 'April Flash Contest',
+        description: 'A quick 3-day trading contest.',
+        start_date: '2024-04-15T00:00:00Z',
+        end_date: '2024-04-18T23:59:59Z',
+        entry_fee: 0,
+        prize_pool: 1000,
+        max_participants: 200,
+        status: 'ended',
+        participant_count: 200,
+        joined: true,
+        platform: 'MetaTrader 5'
+    }
+];
+

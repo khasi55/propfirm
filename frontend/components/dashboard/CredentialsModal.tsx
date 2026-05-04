@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import { X, Copy, Check, Eye, EyeOff, Server, Shield, Key, RefreshCw, Loader2, Save } from "lucide-react";
+import { X, Copy, Check, Eye, EyeOff, Server, Shield, Key, RefreshCw, Loader2, Save, Trophy } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { fetchFromBackend } from "@/lib/backend-api";
@@ -146,8 +146,8 @@ export default function CredentialsModal({ isOpen, onClose, account }: Credentia
                 {/* Header */}
                 <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-white relative">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/20">
-                            <Image src="/shark-icon.svg" alt="Logo" width={24} height={24} className="brightness-0 invert" />
+                        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/20 text-white">
+                            <Trophy size={20} />
                         </div>
                         <div>
                             <h2 className="text-lg font-bold text-slate-900">Account Credentials</h2>

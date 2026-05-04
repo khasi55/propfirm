@@ -117,14 +117,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     isCollapsed ? "justify-center px-2" : "px-6"
                 )}>
                     <Link href="/dashboard" className="flex items-center gap-3 group w-full h-full relative">
-                        <div className="relative w-10 h-10 shrink-0">
-                            <Image
-                                src="/shark-icon.svg"
-                                alt="Demo Funded"
-                                fill
-                                className="object-contain"
-                                priority
-                            />
+                        <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
+                            <Trophy className="w-6 h-6 text-white" />
                         </div>
 
                         {!isCollapsed && (

@@ -10,7 +10,7 @@ import RiskAnalysis from "@/components/dashboard/RiskAnalysis";
 import PageLoader from "@/components/ui/PageLoader";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Copy, Check, QrCode } from "lucide-react";
+import { Copy, Check, QrCode, Trophy } from "lucide-react";
 import Link from "next/link";
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -54,17 +54,17 @@ export default function PublicDashboardPage({ params }: { params: Promise<{ toke
                     className="bg-[#050923] border border-white/10 rounded-[2.5rem] p-10 md:p-14 shadow-2xl max-w-lg w-full relative overflow-hidden"
                 >
                     <div className="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-8">
-                        <Image src="/shark-icon.svg" alt="error" width={48} height={48} className="w-full h-full object-contain p-4" />
+                        <Trophy className="w-12 h-12 text-red-500" />
                     </div>
                     <h1 className="text-3xl font-bold text-white mb-3">Private Dashboard</h1>
                     <p className="text-gray-400 text-sm md:text-base max-w-sm mx-auto leading-relaxed">
-                        This trading performance is private or the link has expired. Join SharkFunded to start your journey.
+                        This trading performance is private or the link has expired. Join Demo Funded to start your journey.
                     </p>
                     <a
-                        href="https://sharkfunded.com"
+                        href="/"
                         className="inline-block mt-10 bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20"
                     >
-                        Visit sharkfunded.com
+                        Visit demofunded.com
                     </a>
 
                     {/* Background decorative glow */}
@@ -83,11 +83,11 @@ export default function PublicDashboardPage({ params }: { params: Promise<{ toke
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <div className="flex items-center gap-4">
                         <Link href="/" className="flex items-center gap-3">
-                            <div className="w-10 h-10 flex items-center justify-center shrink-0">
-                                <Image src="/shark-icon.svg" alt="logo" width={40} height={40} className="w-full h-full object-contain" />
+                            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
+                                <Trophy className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-xl font-black text-slate-900 tracking-tight">
-                                SharkFunded
+                                Demo Funded
                             </span>
                         </Link>
                         <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
@@ -111,7 +111,7 @@ export default function PublicDashboardPage({ params }: { params: Promise<{ toke
                             Login
                         </Link>
                         <Link
-                            href="https://app.sharkfunded.com/checkoutpage"
+                            href="/checkoutpage"
                             className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-6 py-2.5 rounded-full shadow-lg shadow-blue-500/20 transition-all active:scale-95"
                         >
                             Get Started
@@ -139,7 +139,7 @@ export default function PublicDashboardPage({ params }: { params: Promise<{ toke
 
                         <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-sm">
                             <QRCodeSVG
-                                value={`https://app.sharkfunded.com/signup?ref=${account.referral_code}`}
+                                value={`https://demofunded.com/signup?ref=${account.referral_code}`}
                                 size={64}
                                 level="M"
                                 includeMargin={false}
@@ -204,8 +204,8 @@ export default function PublicDashboardPage({ params }: { params: Promise<{ toke
 
             <footer className="border-t border-slate-200 py-12 text-center text-slate-500">
                 <div className="max-w-7xl mx-auto px-4">
-                    <p className="text-sm mb-4">Verification provided by <span className="font-bold text-slate-900">SharkFunded Performance Labs</span></p>
-                    <p className="text-xs uppercase tracking-widest font-bold text-blue-600">Become a Funded Shark</p>
+                    <p className="text-sm mb-4">Verification provided by <span className="font-bold text-slate-900">Demo Funded Performance Labs</span></p>
+                    <p className="text-xs uppercase tracking-widest font-bold text-blue-600">Become a Funded Trader</p>
                 </div>
             </footer>
         </div>

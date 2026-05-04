@@ -130,7 +130,7 @@ function CheckoutContent() {
     const [formData, setFormData] = useState({
         firstName: "", lastName: "", email: "", country: "", phone: "", terms: false, referralCode: ""
     });
-    const [selectedGateway, setSelectedGateway] = useState("sharkpay");
+    const [selectedGateway, setSelectedGateway] = useState("demopay");
 
 
     // Dynamic Size Logic
@@ -307,7 +307,7 @@ function CheckoutContent() {
             }
 
             // Call backend payment API
-            const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://api.sharkfunded.co';
+            const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://api.demofunded.com';
             // EPay requires alphanumeric orderID (no hyphens or special chars)
             const orderId = `SF${Date.now()}${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
             const response = await fetch(`${backendUrl}/api/payments/create-order`, {
@@ -690,19 +690,19 @@ function CheckoutContent() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* SharkPay Option */}
+                            {/* DemoPay Option */}
                             <button
-                                onClick={() => setSelectedGateway("Sharkpay")}
+                                onClick={() => setSelectedGateway("Demopay")}
                                 className={cn(
                                     "p-8 bg-white border rounded-2xl shadow-sm transition-all text-left",
-                                    selectedGateway === "Sharkpay" ? "border-blue-500 ring-2 ring-blue-500/20" : "border-slate-200 hover:border-slate-300"
+                                    selectedGateway === "Demopay" ? "border-blue-500 ring-2 ring-blue-500/20" : "border-slate-200 hover:border-slate-300"
                                 )}
                             >
                                 <div className="flex justify-between items-start mb-4">
-                                    <div className={cn("p-2 rounded-lg", selectedGateway === "Sharkpay" ? "bg-blue-500 text-white" : "bg-slate-100 text-slate-400")}>
+                                    <div className={cn("p-2 rounded-lg", selectedGateway === "Demopay" ? "bg-blue-500 text-white" : "bg-slate-100 text-slate-400")}>
                                         <CreditCard size={24} />
                                     </div>
-                                    {selectedGateway === "Sharkpay" && <Check className="text-blue-500" size={20} />}
+                                    {selectedGateway === "Demopay" && <Check className="text-blue-500" size={20} />}
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-800">UPI / Local</h3>
                                 <p className="text-slate-500 text-sm mt-1">Instant local payments via Demo Pay</p>
@@ -794,7 +794,7 @@ function CheckoutContent() {
                             {loading ? <Loader2 className="animate-spin" /> : (
                                 validatingCoupon ? "Validating Price..." : (
                                     currentStep === 3
-                                        ? (selectedGateway.toLowerCase() === 'cregis' ? "Pay with Crypto" : `Pay with ${selectedGateway === 'Sharkpay' ? 'Demo Pay' : selectedGateway}`)
+                                        ? (selectedGateway.toLowerCase() === 'cregis' ? "Pay with Crypto" : `Pay with ${selectedGateway === 'Demopay' ? 'Demo Pay' : selectedGateway}`)
                                         : "Continue"
                                 )
                             )} <ArrowRight size={18} />

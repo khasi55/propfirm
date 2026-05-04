@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { createClient } from '@/utils/supabase/client'
 import { useRouter } from 'next/navigation'
-import { Loader2, Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react'
+import { Loader2, Mail, Lock, ArrowRight, Eye, EyeOff, Shield } from 'lucide-react'
 import AuthCard from '@/components/auth/AuthCard'
 
 export default function LoginPage() {
@@ -17,54 +17,20 @@ export default function LoginPage() {
     const router = useRouter()
     const supabase = createClient()
 
-    // Prefetch dashboard for instant transition
-    useEffect(() => {
-        router.prefetch('/dashboard')
-
-        const checkSession = async () => {
-            const { data: { session } } = await supabase.auth.getSession()
-            if (session) {
-                router.replace('/dashboard')
-            }
-        }
-
-        checkSession()
-    }, [router, supabase])
-
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
         setError(null)
 
-        try {
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email,
-                password,
-            })
-
-            if (error) {
-                throw error
-            }
-
-            if (data.session) {
-                // Initialize backend session via httpOnly cookie
-                const backendUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
-                await fetch(`${backendUrl}/api/auth/session`, {
-                    method: 'POST',
-                    credentials: 'include', // ESSENTIAL for cross-site cookies
-                    headers: {
-                        'Authorization': `Bearer ${data.session.access_token}`
-                    }
-                }).catch(err => console.error('Session init failed:', err));
-            }
-
-            // Force a hard navigation to ensure fresh state
+        // Demo Login Bypass: Redirect to dashboard after a short delay
+        setTimeout(() => {
             window.location.href = '/dashboard'
-        } catch (err: any) {
-            setError(err.message)
-            setLoading(false)
-        }
+        }, 1000)
     }
+    // Prefetch dashboard for instant transition
+    useEffect(() => {
+        router.prefetch('/dashboard')
+    }, [router])
 
     return (
         <AuthCard
@@ -87,7 +53,7 @@ export default function LoginPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-12 py-3.5 text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white transition-all placeholder:text-slate-400 font-medium"
-                            placeholder="trader@sharkfunded.com"
+                            placeholder="trader@demofunded.com"
                         />
                     </div>
                 </div>
@@ -131,6 +97,31 @@ export default function LoginPage() {
                             <ArrowRight className="w-5 h-5" />
                         </>
                     )}
+                </button>
+
+                <div className="relative my-6">
+                    <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-slate-200"></div>
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                        <span className="bg-white px-2 text-slate-500 font-bold tracking-wider">Or Quick Access</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    onClick={() => {
+                        setEmail('demo@demofunded.com');
+                        setPassword('password123');
+                        setLoading(true);
+                        setTimeout(() => {
+                            window.location.href = '/dashboard';
+                        }, 800);
+                    }}
+                    className="w-full bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 border border-slate-200"
+                >
+                    <Shield className="w-4 h-4 text-blue-600" />
+                    Demo Login
                 </button>
             </form>
         </AuthCard>

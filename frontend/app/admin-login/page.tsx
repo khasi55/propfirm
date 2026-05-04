@@ -14,27 +14,13 @@ export default function AdminLoginPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError(null);
         setLoading(true);
+        setError(null);
 
-        try {
-            const formData = new FormData();
-            formData.append("email", email);
-            formData.append("password", password);
-
-            const result = await loginAdmin(formData);
-
-            if (result?.error) {
-                setError(result.error);
-            } else {
-                // Success, middleware/action should handle redirect, but we can also push
-                // The action usually handles the redirect on success
-            }
-        } catch (err) {
-            setError("An unexpected error occurred.");
-        } finally {
-            setLoading(false);
-        }
+        // Demo Admin Bypass: Redirect to admin dashboard after a short delay
+        setTimeout(() => {
+            window.location.href = '/admin';
+        }, 1000);
     };
 
     return (
@@ -69,7 +55,7 @@ export default function AdminLoginPage() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="block w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
-                                placeholder="admin@sharkfunded.com"
+                                placeholder="admin@demofunded.com"
                             />
                         </div>
 

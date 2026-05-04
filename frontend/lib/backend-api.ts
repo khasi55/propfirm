@@ -1,4 +1,4 @@
-import { MOCK_ACCOUNTS, MOCK_TRADES, MOCK_STATS, MOCK_KYC, MOCK_PRICING, MOCK_USER } from './mock-data';
+import { MOCK_ACCOUNTS, MOCK_TRADES, MOCK_STATS, MOCK_KYC, MOCK_PRICING, MOCK_USER, MOCK_COMPETITIONS } from './mock-data';
 
 export async function fetchFromBackend(endpoint: string, options: RequestInit & { requireAuth?: boolean } = {}): Promise<any> {
     console.log(`[MOCK USER API] ${options.method || 'GET'} ${endpoint}`);
@@ -120,6 +120,13 @@ export async function fetchFromBackend(endpoint: string, options: RequestInit & 
 
     if (url.includes('/api/config/pricing')) {
         return { success: true, data: MOCK_PRICING };
+    }
+
+    if (url.includes('/api/competitions')) {
+        if (url.includes('/leaderboard')) {
+            return [];
+        }
+        return MOCK_COMPETITIONS;
     }
 
     if (url.includes('/api/coupons/validate')) {
