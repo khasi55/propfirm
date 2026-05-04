@@ -27,6 +27,7 @@ async function getDynamicConfig() {
     const headersList = await cookies(); // In server actions we can just get origin headers securely, but simple string match is fine
     const origin = process.env.NEXT_PUBLIC_ADMIN_URL || "https://admin.sharkfunded.com";
 
+
     let rpId = "localhost";
     try {
         rpId = new URL(origin).hostname;
@@ -64,35 +65,24 @@ export async function disable2FA() {
     return { success: true };
 }
 
-export async function getWebAuthnRegistrationOptions() {
-    return { 
-        challenge: 'bW9jay1jaGFsbGVuZ2U', // base64url mock
-        rp: { name: 'SharkFunded', id: 'localhost' },
-        user: { id: 'bW9jay11c2VyLWlk', name: 'admin@sharkfunded.com', displayName: 'Admin User' },
-        pubKeyCredParams: [{ alg: -7, type: 'public-key' }],
-        timeout: 60000,
-        attestation: 'none'
-    } as any;
-}
-
 export async function getWebAuthnRegistrationOptionsForSetup(tempToken: string) {
-    return await getWebAuthnRegistrationOptions();
-}
-
-export async function verifyWebAuthnRegistration(attestationResponse: any) {
-    return { success: true };
+    return { challenge: 'mock-challenge' };
 }
 
 export async function verifyWebAuthnRegistrationForSetup(tempToken: string, attestationResponse: any) {
     return { success: true };
 }
 
+export async function getWebAuthnRegistrationOptions() {
+    return { challenge: 'mock-challenge' };
+}
+
+export async function verifyWebAuthnRegistration(attestationResponse: any) {
+    return { success: true };
+}
+
 export async function getWebAuthnAuthenticationOptions(tempToken: string) {
-    return { 
-        challenge: 'bW9jay1jaGFsbGVuZ2U',
-        timeout: 60000,
-        userVerification: 'preferred'
-    } as any;
+    return { challenge: 'mock-challenge' };
 }
 
 export async function verifyWebAuthnLogin(tempToken: string, authResponse: any) {

@@ -37,7 +37,9 @@
     "@supabase/supabase-js": "^2.48.1",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
+    "csv-parse": "^6.2.1",
     "date-fns": "^4.1.0",
+    "dotenv": "^17.4.2",
     "framer-motion": "^12.4.7",
     "ioredis": "^5.8.2",
     "jsonwebtoken": "^9.0.2",
@@ -50,8 +52,10 @@
     "react-dom": "19.2.1",
     "react-hot-toast": "^2.5.2",
     "recharts": "^2.15.1",
+    "socket.io-client": "^4.8.3",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "use-debounce": "^10.1.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.8",
